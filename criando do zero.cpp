@@ -18,6 +18,131 @@ struct cadastro{
 
 }*pessoas;
 
+//funcoes para a execursao do programa
+
+cadastro *inicializar();
+
+void limparbuffer(void);
+
+cadastro *inserir(cadastro *pessoas);
+
+cadastro *editar(cadastro *pessoas);
+
+void *listar(cadastro *pessoas);
+
+
+
+int main (){
+
+    pessoas = inicializar();
+    void limparbuffer(void);
+    void *listar(cadastro *pessoas);
+    
+    int menu, fecharprograma;
+
+
+    do {
+
+	printf("esolha qual opcao deseja: \n");
+    printf("1 - Cadastrar: \n");
+    printf("2 - Editar : \n");
+	printf("3 - listar : \n");
+
+	scanf("%i", &menu);
+    limparbuffer();
+
+
+	switch(menu){
+
+		case 1 :
+
+            printf("---------------------------    Cadastro       ------------------------------\n\n");
+
+            int parar;
+                    
+            while (parar!=2){
+                
+
+                pessoas=inserir(pessoas);
+
+                printf("Digite (1) REALIZAR UM NOVO CADASTRO / (2) VOLTAR : \n\n");
+                scanf("%d", &parar);
+                fflush(stdin);
+                printf("\n");
+
+
+                while(parar!=1 && parar!=2){
+
+                    printf("Digitos invalidos, verifique a opcao desejada.\nDeseja realizar um novo cadastro digite (1) SIM  e (2) NAO: \n\n");
+                    scanf("%d", &parar);
+                    fflush(stdin);
+                    printf("\n");
+                }
+                    
+                if(parar==1){
+
+                    printf("-----------------------------   Realizar novo cadastro --------------------------- \n\n");
+                    
+                }else{ 
+
+                    printf("----------------------------- Aba de cadastro fechada ------------------------------\n\n");
+                    
+                }
+
+            }
+
+            break;
+		
+		case 2:
+
+			printf("-------------------------      Editar     ------------------------------------\n\n");
+			
+            editar(pessoas);
+            limparbuffer();
+
+			break;
+
+        case 3:
+
+            printf("-------------------------      Lista dos cadastrados  ------------------------------------\n\n");
+            listar(pessoas);
+
+        break;
+
+
+		default:
+
+			printf("opcao invalida\n\n");
+
+		break;
+
+	}
+
+		printf("digite - (1) PARA FECHAR O PROGRAMA / (2) PARA VOLTAR AO MENU DE SELECOES: \n");
+		scanf("%d", &fecharprograma);
+        limparbuffer();
+		
+
+		while (fecharprograma!=1 && fecharprograma!=2){
+
+			printf("Dados digitados incorretamente. Digite (1) para sair do programa e (2) para realizar outra operação :\n ");
+		scanf("%d",&fecharprograma);
+		limparbuffer();
+
+		}
+		
+
+	
+} while (fecharprograma!=1);
+
+
+
+
+	return 0; 	
+
+ 		
+}
+
 cadastro *inicializar(){
     return NULL;
 }
@@ -27,8 +152,6 @@ void limparbuffer(void){
   while ((c= getchar())  != '\n' && c != EOF);
   
 }
-
-
 
 cadastro *inserir(cadastro *pessoas){
 
@@ -193,7 +316,7 @@ if (v_e_encontrado!=1){
 
 		printf("Deseja editar algum dos dados ? (1) SIM  / (2) NAO : \n\n");
 			scanf("%d", &editar);
-			fflush(stdin);
+			limparbuffer();
 
 	}    
 
@@ -211,6 +334,7 @@ if (v_e_encontrado!=1){
                     printf("6 - Vacina\n");
                     scanf("%d\n", &escolha_editar);
                     limparbuffer();
+                    
                 
         
                     switch (escolha_editar) {
@@ -318,13 +442,14 @@ if (v_e_encontrado!=1){
 
 void *listar(cadastro *pessoas){
         cadastro *mostrar;
-        int i, pesquisa, visualizar, verificap=0;
+        int i, pesquisa=0, visualizar=0, verificap=0;
         char encontrar[100];
         void limparbuffer(void);
 
     while (pesquisa!=1 && pesquisa!=2){
         printf("Para visualizar a lista de ( NOMES digite-(1) ) / ( EMAIL digite-(2) )\n ");
-    scanf("%d", &pesquisa);
+        scanf("%d", &pesquisa);
+        limparbuffer();
     }
 
 
@@ -352,7 +477,7 @@ void *listar(cadastro *pessoas){
     else{
 
     while (visualizar!=1 && visualizar!=2){
-        printf("Deseja visualizar os dados completo de alguma dessas pessoas ? SIM - (1)  / NAO - (2)\n");
+        printf("Deseja visualizar os dados completo de alguma pessoa da lista ? SIM - (1)  / NAO - (2)\n");
         scanf("%d",&visualizar);
         limparbuffer();
         printf("\n\n");
@@ -405,117 +530,3 @@ void *listar(cadastro *pessoas){
 }
 
 }
-
-int main (){
-
-    pessoas = inicializar();
-    void limparbuffer(void);
-    void *listar(cadastro *pessoas);
-    
-    int menu, fecharprograma;
-
-    printf("teste");
-
-
-    do {
-
-
-
-	printf("esolha qual opcao deseja: \n");
-    printf("1 - Cadastrar: \n");
-    printf("2 - Editar : \n");
-	printf("3 - listar : \n");
-
-	scanf("%i", &menu);
-    limparbuffer();
-
-
-	switch(menu){
-
-		case 1 :
-
-            printf("---------------------------    Cadastro       ------------------------------\n\n");
-
-            int parar;
-                    
-            while (parar!=2){
-                
-
-                pessoas=inserir(pessoas);
-
-                printf("Digite (1) REALIZAR UM NOVO CADASTRO / (2) VOLTAR : \n\n");
-                scanf("%d", &parar);
-                fflush(stdin);
-                printf("\n");
-
-
-                while(parar!=1 && parar!=2){
-
-                    printf("Digitos invalidos, verifique a opcao desejada.\nDeseja realizar um novo cadastro digite (1) SIM  e (2) NAO: \n\n");
-                    scanf("%d", &parar);
-                    fflush(stdin);
-                    printf("\n");
-                }
-                    
-                if(parar==1){
-
-                    printf("-----------------------------   Realizar novo cadastro --------------------------- \n\n");
-                    
-                }else{ 
-
-                    printf("----------------------------- Aba de cadastro fechada ------------------------------\n\n");
-                    
-                }
-
-            }
-
-            break;
-		
-		case 2:
-
-			printf("-------------------------      Editar     ------------------------------------\n\n");
-			
-            editar(pessoas);
-
-			break;
-
-        case 3:
-
-            printf("-------------------------      Lista dos cadastrados  ------------------------------------\n\n");
-            listar(pessoas);
-
-        break;
-
-
-		default:
-
-			printf("opcao invalida\n\n");
-
-		break;
-
-	}
-
-		printf("digite - (1) PARA FECHAR O PROGRAMA / (2) PARA VOLTAR AO MENU DE SELECOES: \n");
-		scanf("%d", &fecharprograma);
-		
-
-		while (fecharprograma!=1 && fecharprograma!=2){
-
-			printf("Dados digitados incorretamente. Digite (1) para sair do programa e (2) para realizar outra operação :\n ");
-		scanf("%d",&fecharprograma);
-		fflush(stdin);
-
-		}
-		
-
-	
-} while (fecharprograma!=1);
-
-
-
-
-	return 0; 	
-
- 		
-}
-
